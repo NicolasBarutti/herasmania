@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heras Mania – Seguros e Consórcios</title>
+  <style>
+    :root {
+      --verde: #0B4B31;
+      --verde-claro: #E7F2ED;
+      --laranja: #FF5920;
+      --cinza: #555555;
+      --fundo: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--fundo);
+      color: var(--cinza);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER / MENU */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-area img {
+      height: 70px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--verde);
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cinza);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      padding: 0.25rem 0;
+      position: relative;
+      font-weight: 500;
+      color: var(--verde);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--laranja);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    /* HERO */
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 3vw + 1rem, 2.8rem);
+      color: var(--verde);
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 span {
+      color: var(--laranja);
+    }
+
+    .hero-text p {
+      font-size: 1.02rem;
+      margin-bottom: 1.5rem;
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .badge {
+      background: var(--verde-claro);
+      color: var(--verde);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-whatsapp {
+      background: var(--laranja);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 89, 32, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 89, 32, 0.45);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--verde);
+      border: 1px solid var(--verde);
+    }
+
+    .btn-outline:hover {
+      background: var(--verde-claro);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f0f0f0;
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: var(--verde);
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card li {
+      font-size: 0.88rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card li::before {
+      content: "• ";
+      color: var(--laranja);
+      font-weight: 900;
+    }
+
+    /* SEÇÕES GENÉRICAS */
+
+    section {
+      padding: 3rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--verde);
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: #777;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* COMPENSA O HEADER FIXO AO ROLAR PARA AS ÂNCORAS */
+    #inicio,
+    #quem-somos,
+    #especialidades,
+    #servicos,
+    #consorcios,
+    #contato {
+      scroll-margin-top: 110px;
+    }
+
+    /* QUEM SOMOS */
+
+    .quem-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .quem-box {
+      background: var(--verde-claro);
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+    }
+
+    .quem-box h3 {
+      font-size: 1.1rem;
+      color: var(--verde);
+      margin-bottom: 0.6rem;
+    }
+
+    .quem-box p {
+      font-size: 0.9rem;
+    }
+
+    /* FOTOS NICOLAS + PAI */
+
+    .quem-fotos {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .foto-item {
+      text-align: center;
+    }
+
+    .foto-item img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #0B4B31;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .foto-item p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .mv-item {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid #e4ece8;
+    }
+
+    .mv-item h4 {
+      font-size: 0.95rem;
+      color: var(--verde);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mv-item p,
+    .mv-item ul {
+      font-size: 0.9rem;
+    }
+
+    .mv-item ul {
+      padding-left: 1rem;
+    }
+
+    /* ESPECIALIDADES (SEGUROS X CONSÓRCIOS) */
+
+    .especialidades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .especial-box {
+      border-radius: 1.3rem;
+      padding: 1.5rem;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+    }
+
+    .especial-box h3 {
+      font-size: 1.1rem;
+      color: var(--verde);
+      margin-bottom: 0.5rem;
+    }
+
+    .especial-box p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .especial-box ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .especial-box li::before {
+      content: "› ";
+      color: var(--laranja);
+      font-weight: 700;
+    }
+
+    /* SERVIÇOS (CARDS) */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 1.1rem;
+      padding: 1.3rem 1.2rem;
+      border: 1px solid #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      color: var(--verde);
+      margin-bottom: 0.2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--laranja);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    /* CONSÓRCIOS DETALHE */
+
+    .consorcios-high {
+      background: var(--verde-claro);
+    }
+
+    .consorcios-high .card {
+      background: #fff;
+    }
+
+    /* DIFERENCIAIS */
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .diferencial {
+      background: #fff;
+      border-radius: 1.1rem;
+      padding: 1.2rem 1.3rem;
+      border-left: 4px solid var(--laranja);
+    }
+
+    .diferencial h3 {
+      font-size: 1rem;
+      color: var(--verde);
+      margin-bottom: 0.4rem;
+    }
+
+    .diferencial p {
+      font-size: 0.9rem;
+    }
+
+    /* PARCEIROS */
+
+    .parceiros-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .parceiro-pill {
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      border: 1px dashed #cbd7cf;
+      background: #fff;
+    }
+
+    /* CONTATO */
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 2rem;
+    }
+
+    form {
+      background: #fff;
+      border-radius: 1.3rem;
+      padding: 1.5rem;
+      border: 1px solid #e5e5e5;
+    }
+
+    .field-group {
+      margin-bottom: 0.9rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+      color: var(--verde);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.6rem;
+      border: 1px solid #d2ddd7;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 90px;
+    }
+
+    .contato-info {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contato-info p {
+      margin-bottom: 0.5rem;
+    }
+
+    .contato-info strong {
+      color: var(--verde);
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 1rem;
+      padding: 1.2rem 1.5rem 1.4rem;
+      background: #0b4b31;
+      color: #e5f4ec;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #e5f4ec;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+
+    /* BOTÃO FIXO WHATSAPP */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 999;
+    }
+
+    .whatsapp-float a {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--laranja);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.4rem;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 800px) {
+      nav ul {
+        display: none;
+      }
+
+      .nav-cta {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .quem-grid,
+      .contato-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/5511952396988" target="_blank" aria-label="Falar no WhatsApp">
+      ☏
+    </a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="logo-area">
+        <!-- SUA LOGO -->
+        <img src="img/ChatGPT Image 25 de nov. de 2025, 11_59_05.png" alt="Heras Mania - Corretora de Seguros" />
+        <div class="logo-text">
+          <span>HERAS MANIA</span>
+          <span>Seguros &amp; Consórcios</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#quem-somos">Quem Somos</a></li>
+          <li><a href="#especialidades">Seguros &amp; Consórcios</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#consorcios">Consórcios</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="https://wa.me/5511952396988" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="inicio" class="hero">
+    <div class="hero-text">
+      <h1>Proteção e planejamento em <span>Seguros &amp; Consórcios</span>.</h1>
+      <p>
+        Há mais de 15 anos ajudando pessoas e empresas a protegerem seu patrimônio e
+        conquistarem objetivos com soluções completas em seguros e consórcios.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge">Consultoria especializada</span>
+        <span class="badge">Atendimento humano</span>
+        <span class="badge">Principais seguradoras e administradoras</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn btn-whatsapp" href="https://wa.me/5511952396988" target="_blank">
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-outline" href="#contato">
+          Solicitar cotação
+        </a>
+      </div>
+
+      <p class="hero-note">
+        Você protegido hoje, planejando o amanhã com a Heras Mania.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h2>Especialistas em dois pilares</h2>
+      <p>
+        Analisamos seu perfil e montamos a solução ideal em seguros e consórcios,
+        sem empurrar produto e com total transparência.
+      </p>
+      <ul>
+        <li>Seguros sob medida para pessoas e empresas</li>
+        <li>Consórcios estratégicos para conquistar bens e projetos</li>
+        <li>Acompanhamento completo antes, durante e depois da contratação</li>
+      </ul>
+      <a class="btn btn-outline" href="#especialidades">Ver nossas especialidades</a>
+    </aside>
+  </main>
+
+  <!-- QUEM SOMOS -->
+  <section id="quem-somos">
+    <div class="section-inner">
+      <h2 class="section-title">Quem Somos</h2>
+      <p class="section-subtitle">
+        A Heras Mania é uma corretora especializada em seguros e consórcios, atuando como parceira
+        na proteção e no planejamento financeiro de clientes pessoa física e jurídica.
+      </p>
+
+      <div class="quem-grid">
+        <!-- COLUNA ESQUERDA: TEXTO + FOTOS -->
+        <div>
+          <div class="quem-box">
+            <h3>Heras Mania – Corretora de Seguros &amp; Consórcios</h3>
+            <p>
+              Com mais de 15 anos de experiência, oferecemos um atendimento humano, próximo e
+              consultivo. Nosso papel é entender a sua realidade, explicar com linguagem simples as
+              opções disponíveis e indicar o que realmente faz sentido para o seu momento de vida
+              ou para o seu negócio.
+            </p>
+          </div>
+
+          <!-- FOTOS NICOLAS + PAI -->
+          <div class="quem-fotos">
+            <div class="foto-item">
+              <img src="img/fotoPerfil.jpg" alt="Nicolas - Heras Mania">
+              <p>
+                <strong>Nicolas Barutti</strong><br>
+                Consultor Especialista
+              </p>
+            </div>
+
+            <div class="foto-item">
+              <img src="img/pai.jpeg" alt="Sócio - Heras Mania">
+              <p>
+                <strong>Marcio Barutti</strong><br>
+                Fundador / Diretor
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUNA DIREITA: MISSÃO, VISÃO, VALORES -->
+        <div>
+          <div class="mv-grid">
+            <div class="mv-item">
+              <h4>Missão</h4>
+              <p>
+                Proporcionar tranquilidade e planejamento aos nossos clientes por meio de soluções em
+                seguros e consórcios com qualidade, ética e eficiência.
+              </p>
+            </div>
+            <div class="mv-item">
+              <h4>Visão</h4>
+              <p>
+                Ser referência em consultoria de seguros e consórcios, reconhecida pela proximidade com
+                o cliente e pela excelência no atendimento.
+              </p>
+            </div>
+            <div class="mv-item">
+              <h4>Valores</h4>
+              <ul>
+                <li>Comprometimento e ética</li>
+                <li>Transparência nas orientações</li>
+                <li>Atendimento personalizado</li>
+                <li>Trabalho focado em resultado para o cliente</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES: SEGUROS X CONSÓRCIOS -->
+  <section id="especialidades" style="background: #f8faf9;">
+    <div class="section-inner">
+      <h2 class="section-title">Nossas Especialidades</h2>
+      <p class="section-subtitle">
+        Somos especialistas em dois grandes pilares: proteção através de seguros e
+        planejamento através de consórcios. Você escolhe o objetivo, nós montamos a estratégia.
+      </p>
+
+      <div class="especialidades-grid">
+        <div class="especial-box">
+          <span class="tag">Seguros</span>
+          <h3>Proteção para você, sua família e sua empresa</h3>
+          <p>
+            Cuidamos da proteção do que é mais importante: vida, família, patrimônio e negócios.
+            Analisamos riscos e indicamos as coberturas ideais com custo-benefício equilibrado.
+          </p>
+          <ul>
+            <li>Seguro Automóvel</li>
+            <li>Seguro Residencial</li>
+            <li>Seguro de Vida</li>
+            <li>Seguro Empresarial</li>
+            <li>Saúde e Odontológico</li>
+            <li>Transportes</li>
+            <li>Previdência / proteção financeira</li>
+          </ul>
+        </div>
+
+        <div class="especial-box">
+          <span class="tag">Consórcios</span>
+          <h3>Planejamento inteligente, sem juros</h3>
+          <p>
+            Consórcios com estratégia, não apenas com carta de crédito. Ajudamos você a escolher o grupo,
+            o prazo e o valor de crédito ideais, além de orientar sobre lances e contemplação.
+          </p>
+          <ul>
+            <li>Consórcio de Imóvel</li>
+            <li>Consórcio de Veículos</li>
+            <li>Consórcio de Serviços</li>
+            <li>Consórcio para Máquinas e Equipamentos</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BOTÃO ESPECIALIDADES -->
+      <div style="text-align:center; margin-top:2rem;">
+        <a class="btn btn-whatsapp"
+          href="https://wa.me/5511952396988?text=Olá,+quero+saber+qual+é+a+melhor+opção+de+seguro+ou+consórcio+para+mim"
+          style="padding:1rem 2rem; font-size:1.05rem;">
+          Falar com um Especialista
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVIÇOS (CARDS SEGUROS) -->
+  <section id="servicos">
+    <div class="section-inner">
+      <h2 class="section-title">Seguros que oferecemos</h2>
+      <p class="section-subtitle">
+        Trabalhamos com as principais seguradoras do mercado para entregar soluções completas e
+        personalizadas em seguros.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Automóvel</h3>
+          <p>
+            Proteção completa para seu veículo, com assistência 24h, carro reserva e coberturas sob medida
+            para roubo, colisão e danos a terceiros.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Residencial</h3>
+          <p>
+            Segurança para seu lar contra incêndios, roubos, danos elétricos e eventos da natureza, garantindo
+            tranquilidade para sua família.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Vida</h3>
+          <p>
+            Amparo financeiro para quem você ama, com coberturas flexíveis de acordo com a sua realidade e seus
+            projetos de vida.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Empresarial</h3>
+          <p>
+            Proteção para empresas de diversos portes, cobrindo patrimônio, operações, responsabilidade civil e
+            muito mais.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Planos</span>
+          <h3>Saúde e Odonto</h3>
+          <p>
+            Planos individuais, familiares e empresariais com ampla rede credenciada e opções que cabem no orçamento.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Transportes</h3>
+          <p>
+            Coberturas especializadas para cargas e operações de transporte, com atenção total à gestão de riscos.
+          </p>
+        </article>
+
+        <!-- NOVO CARD – Seguro Fiança Locatícia -->
+        <article class="card">
+          <span class="tag">Seguro</span>
+          <h3>Fiança Locatícia</h3>
+          <p>
+            Garanta a locação do imóvel sem fiador. Proteção para o proprietário e mais
+            agilidade para quem deseja alugar, com análise rápida e planos acessíveis.
+          </p>
+        </article>
+
+        <!-- NOVO CARD – Outros Seguros + botão WhatsApp -->
+        <article class="card">
+          <span class="tag">Mais Seguros</span>
+          <h3>Outros Seguros</h3>
+          <p>
+            Também oferecemos seguro viagem, condomínio, equipamentos, responsabilidade civil,
+            rural e outras soluções sob medida para cada necessidade.
+          </p>
+          <a class="btn btn-whatsapp"
+             href="https://wa.me/5511952396988?text=Olá,+quero+saber+mais+sobre+outros+seguros!"
+             style="margin-top:0.6rem; width:100%; text-align:center;">
+            Falar no WhatsApp
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSÓRCIOS DETALHADOS -->
+  <section id="consorcios" class="consorcios-high">
+    <div class="section-inner">
+      <h2 class="section-title">Consórcios Heras Mania</h2>
+      <p class="section-subtitle">
+        Ideal para quem quer conquistar bens e realizar projetos sem pagar juros. A Heras Mania acompanha
+        todo o processo: da simulação até a contemplação e utilização do crédito.
+      </p>
+
+      <div class="cards-grid">
+        <article class="card">
+          <span class="tag">Consórcio</span>
+          <h3>Imóvel</h3>
+          <p>
+            Para sair do aluguel, comprar o primeiro imóvel ou investir. Orientamos sobre uso de FGTS,
+            lances e melhor estratégia para contemplação.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Consórcio</span>
+          <h3>Veículos</h3>
+          <p>
+            Carros ou motos, novos ou seminovos, com planos adaptados a uso pessoal, profissional ou frotas.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Consórcio</span>
+          <h3>Serviços</h3>
+          <p>
+            Ideal para reformas, viagens, estudos, procedimentos estéticos ou cirurgias eletivas, com
+            planejamento leve para o orçamento.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="tag">Consórcio</span>
+          <h3>Máquinas e Equipamentos</h3>
+          <p>
+            Pensado para empresas que precisam investir sem comprometer o caixa, planejando expansão com segurança.
+          </p>
+        </article>
+      </div>
+
+      <div style="margin-top: 1.8rem;">
+        <a class="btn btn-whatsapp" href="https://wa.me/5511952396988?text=Quero+entender+melhor+sobre+cons%C3%B3rcio" target="_blank">
+          Quero simular um consórcio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section id="diferenciais">
+    <div class="section-inner">
+      <h2 class="section-title">Por que escolher a Heras Mania?</h2>
+      <p class="section-subtitle">
+        Mais do que vender produtos, nosso foco é construir relacionamento e ser seu ponto de apoio quando
+        o assunto é proteção e planejamento.
+      </p>
+
+      <div class="diferenciais-grid">
+        <div class="diferencial">
+          <h3>Atendimento humano e próximo</h3>
+          <p>
+            Você fala com pessoas de verdade, que entendem suas dúvidas e explicam cada detalhe com clareza.
+          </p>
+        </div>
+        <div class="diferencial">
+          <h3>Consultoria completa</h3>
+          <p>
+            Analisamos seu momento, comparamos opções de mercado e apontamos o caminho mais vantajoso.
+          </p>
+        </div>
+        <div class="diferencial">
+          <h3>Principais parceiros do mercado</h3>
+          <p>
+            Trabalhamos com seguradoras e administradoras de consórcio sólidas e reconhecidas.
+          </p>
+        </div>
+        <div class="diferencial">
+          <h3>Suporte em sinistros e contemplações</h3>
+          <p>
+            Acompanhamos você quando mais precisa: na hora de acionar o seguro ou usar a carta de crédito.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCEIROS -->
+  <section id="parceiros">
+    <div class="section-inner">
+      <h2 class="section-title">Seguradoras e administradoras parceiras</h2>
+      <p class="section-subtitle">
+        Parcerias com grandes players do mercado para oferecer segurança, solidez e as melhores condições
+        para você.
+      </p>
+
+      <div class="parceiros-row">
+        <span class="parceiro-pill">Porto Seguro</span>
+        <span class="parceiro-pill">Bradesco Seguros</span>
+        <span class="parceiro-pill">Itaú Seguros</span>
+        <span class="parceiro-pill">Tokio Marine</span>
+        <span class="parceiro-pill">Allianz</span>
+        <span class="parceiro-pill">HDI Seguros</span>
+        <span class="parceiro-pill">E outras…</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="section-inner">
+      <h2 class="section-title">Fale com a Heras Mania</h2>
+      <p class="section-subtitle">
+        Tire suas dúvidas, solicite uma cotação ou peça uma consultoria sem compromisso.
+        Retornamos o contato o mais rápido possível em horário comercial.
+      </p>
+
+      <div class="contato-grid">
+        <form id="contato-form" method="POST">
+          <div class="field-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="Nome" placeholder="Seu nome" required />
+          </div>
+
+          <div class="field-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="Email" placeholder="seuemail@exemplo.com" required />
+          </div>
+
+          <div class="field-group">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="Telefone" placeholder="(11) 99999-9999" />
+          </div>
+
+          <div class="field-group">
+            <label for="tipo">O que você procura?</label>
+            <select id="tipo" name="Tipo">
+              <option value="">Selecione</option>
+              <option value="Seguros">Seguros</option>
+              <option value="Consórcios">Consórcios</option>
+              <option value="Ambos">Ainda não sei, quero orientação</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="Mensagem" placeholder="Conte um pouco do que você precisa…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-whatsapp" style="width:100%; margin-top: 0.5rem;">
+            Enviar mensagem
+          </button>
+        </form>
+
+        <div class="contato-info">
+          <p><strong>WhatsApp:</strong> (11) 95239-6988</p>
+          <p><strong>Telefone:</strong> (11) 4385-5994</p>
+          <p><strong>E-mail:</strong> herasmania@uol.com.br</p>
+          <p><strong>Endereço:</strong> Avenida São Paulo, 177 - sala 7 – Intercap – Taboão da Serra/SP</p>
+          <a class="btn btn-whatsapp"
+             href="https://wa.me/5511952396988?text=Olá,+gostaria+de+falar+com+a+Heras+Mania"
+             style="margin-top:1rem;">
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        © <span id="ano"></span> Heras Mania – Corretora de Seguros &amp; Consórcios. Todos os direitos reservados.
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Seguros</a>
+        <a href="#consorcios">Consórcios</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza o ano automaticamente
+    document.getElementById("ano").textContent = new Date().getFullYear();
+
+    // Envio do formulário via AJAX para FormSubmit, sem sair da página
+    const form = document.getElementById('contato-form');
+
+    if (form) {
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault(); // não recarrega a página
+
+        const formData = new FormData(form);
+        const data = {};
+
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/nicolasbarutti@herasseguros.com.br', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (response.ok) {
+            alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+            form.reset();
+          } else {
+            alert('Não foi possível enviar sua mensagem agora. Tente novamente ou fale pelo WhatsApp: (11) 95239-6988.');
+          }
+        } catch (error) {
+          alert('Ocorreu um erro no envio. Tente novamente ou fale pelo WhatsApp: (11) 95239-6988.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
