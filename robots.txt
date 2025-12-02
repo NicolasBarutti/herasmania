@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://herasmaniaseguros.com.br/sitemap.xml
